@@ -20,6 +20,12 @@ Mopidy-YouTube
 
 Mopidy extension that plays sound from YouTube.
 
+Note
+====
+
+Don't forget to install youtube-dl::
+
+    pip2 install youtube-dl
 
 Maintainer wanted
 =================

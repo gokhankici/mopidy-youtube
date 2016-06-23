@@ -162,8 +162,16 @@ class YouTubeLibraryProvider(backend.LibraryProvider):
             return [item for item in [resolve_track(track)] if item]
 
     def search(self, query=None, uris=None, exact=False):
-        # TODO Support exact search
+        if 'any' in query:
+            q = query['any'][0] if query['any'] else None
+            if q and q.startswith('yt:'):
+                query['any'][0] = q[3:]
+            else:
+                return SearchResult(uri=search_uri, tracks=[])
+        else:
+            return SearchResult(uri=search_uri, tracks=[])
 
+        # TODO Support exact search
         if not query:
             return
 
